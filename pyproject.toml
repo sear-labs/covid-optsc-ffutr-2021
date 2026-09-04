@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "covid-therapeutics-sc"
+name = "covid-optsc-ffutr-2021"
 version = "1.0.0"
 description = "COVID-19 therapeutics supply-chain optimisation, NSF EAGER #2028612"
 readme = "README.md"
