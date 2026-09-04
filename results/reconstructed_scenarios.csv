@@ -1,0 +1,5 @@
+scenario,service_level_pct,penalty_MUSD,paper_penalty_MUSD,transport_MUSD
+1,26.0,33.88,34.0,0.16
+2,52.0,21.98,22.0,0.33
+3,78.0,10.07,,0.49
+4,100.0,0.0,0.0,0.63

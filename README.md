@@ -49,6 +49,65 @@ number is exact and reproducible on any solver, not an incumbent inside a gap.
 must satisfy: non-negative flow, no producer over supply, no depot over throughput, conservation at
 every depot, and demand balanced against deficit at every customer.
 
+## Reconstructing the paper's actual scenarios
+
+The notebook shipped a **10-customer example**. The paper ran **96 Harris County ZIP codes across
+eight scenarios**, and its parameter file was not preserved. `scripts/reconstruct_paper.py` and
+`scripts/calibrate.py` rebuild that parameterisation from the project's own data and check it
+against every number the paper publishes.
+
+### Demand is recovered exactly, and confirmed twice
+
+`Information Tables/Zip Code Populations.xlsx`, column **`Pop2019`**, restricted to ZIPs
+**77002–77099**, sums to **3,270,360** — the paper's stated Harris County population *to the digit*.
+Twenty percent of it is **654,072**, again exactly the paper's stated elderly target. Two
+independent exact matches, so this is the right table, the right column and the right ZIP range.
+Demand per ZIP is 20% of its `Pop2019`.
+
+### Two parameters were never recorded, so they were fitted
+
+The paper gives penalty as a **range** ($35–$70), not a value, and never states the scenario-1
+supply. Both were grid-searched against the published results. The best fit uses **$70 per unserved
+person** — the top of the paper's own band — and **scenario-1 supply at 26% of demand**:
+
+| scenario | service level | penalty rebuilt | penalty in paper | transport |
+|---:|---:|---:|---:|---:|
+| 1 | 26.0% | **$33.88M** | $34M | $0.16M |
+| 2 | 52.0% | **$21.98M** | $22M | $0.33M |
+| 3 | 78.0% | $10.07M | *(chart only)* | $0.49M |
+| 4 | 100.0% | **$0.00M** | $0 | $0.63M |
+
+**All three published penalty figures reproduce to within 0.4%**, and the qualitative findings hold:
+penalty falls monotonically to zero by scenario 4, transport rises as coverage grows, and transport
+stays far below penalty throughout — the paper's central point.
+
+### One published number cannot be reproduced, and the reason is arithmetic
+
+The paper also reports a **32% service level at scenario 1**. That is incompatible with its own
+penalty figures under equal distribution:
+
+- the **ratio** 34/22 = 1.545 forces supply₁ ≈ 26% of demand, because when supply doubles,
+  unmet₂/unmet₁ = (D−2S)/(D−S), which equals 0.647 only at S = 0.261·D
+- a 32% service level would instead give unmet₂/unmet₁ = 0.36/0.68 = 0.529, i.e. a penalty pair of
+  **34 and 18**, not 34 and 22
+
+So the reported service level and the reported penalty pair imply **different supply levels**. No
+choice of penalty rate reconciles them — fitting the service level instead gives $15.6M and $8.2M
+against the published $34M and $22M. `calibrate.py` reports both fits side by side rather than
+quietly optimising one and presenting it as agreement.
+
+Most likely the 32% is computed on a different base or is a reporting slip; the penalty figures are
+mutually consistent and the service level is the odd one out.
+
+### What ships
+
+- `data/derived_paper_instance.csv` — the recovered 96-ZIP instance: population, demand, SVI-scaled
+  penalty, last-mile miles
+- `results/reconstructed_scenarios.csv` — the table above
+
+`data/raw/` still holds the original 10-customer example, which is what `run_all.py` and the tests
+use, because it is the instance whose answer (579,000) is independently recorded in the notebook.
+
 ## What matches the paper, and what does not
 
 **The model structure matches exactly.** The Frontiers paper defines the same problem in the same
