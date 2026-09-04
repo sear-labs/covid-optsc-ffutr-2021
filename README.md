@@ -49,6 +49,25 @@ number is exact and reproducible on any solver, not an incumbent inside a gap.
 must satisfy: non-negative flow, no producer over supply, no depot over throughput, conservation at
 every depot, and demand balanced against deficit at every customer.
 
+## What matches the paper, and what does not
+
+**The model structure matches exactly.** The Frontiers paper defines the same problem in the same
+terms — *"Given a set of producers, depots, and customers (zip codes)…"* with
+`Depots {D1..D5}` and `Customers {C1..C10}`, and parameters `cost`, `supply`, `through`, `demand`.
+Those are precisely this repository's five input tables and the sets in `model.py`.
+
+**The parameter values do not, and the objective is therefore not a paper result.** The paper's
+Table 2 gives a shortage penalty of **$35–$70** and transport at **$1/mile**; the shipped instance
+uses a flat penalty of **100** and costs from **0.2 to 999**. So `579,000` is the *example* instance's
+optimum, reproduced exactly from the notebook that produced it — not a number the paper reports.
+
+**The paper reports no headline objective at all.** Its results are presented as Figure 7, a chart,
+so there is no published figure to assert against. That is why `tests/` targets the notebook's
+recorded `579000.0` rather than a paper value — the honest referent, and stated as such.
+
+The distinction in one line: **this reproduces the model, not the paper's run.** Anyone wanting the
+paper's numbers needs the paper's parameters, which were not preserved.
+
 ## The data is synthetic
 
 **One producer `P1`, depots `D1`–`D5`, customers `C1`–`C10`, round figures throughout.** There are
