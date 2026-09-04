@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "covid-therapeutics-sc"
+version = "1.0.0"
+description = "COVID-19 therapeutics supply-chain optimisation, NSF EAGER #2028612"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+license = { text = "MIT" }
+authors = [{ name = "Erick C. Jones Jr.", email = "erick.jones@uta.edu" }]
+
+# Upper bounds are deliberate: this repo is pinned to a published result and an
+# unannounced major version could silently change it. pandas>=2 is required -
+# the original notebook used DataFrame.append, removed in 2.0, and the port
+# does not.
+dependencies = ["pandas>=2.0,<3", "gurobipy>=11.0,<14"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0,<9"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

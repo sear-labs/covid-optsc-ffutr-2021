@@ -1,0 +1,6 @@
+Tabs,Description,Unit,Input Information
+supply,The manufacturer and how many vaccines they have,number of vaccines,How many vaccines available in Houston
+through,The depots / Walgreens / CVS / providers and how many vaccines they can hold,number of vaccines,How much capacity we think per place
+demand,The Zip Codes demand based on population,people,Zip Code demographic info (given before)
+Penalty,The CHI index the higher the more your prioritize (can be based on case info),unitless,Either Case Info or CHI
+Cost,"The distances from a provider, depot (Walgreens), to customer",miles,Google maps where there are distances
