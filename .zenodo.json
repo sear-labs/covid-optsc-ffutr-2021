@@ -1,0 +1,35 @@
+{
+  "upload_type": "software",
+  "license": "mit-license",
+  "creators": [
+    {
+      "name": "Jones, Erick C., Jr.",
+      "affiliation": "University of Texas at Arlington",
+      "orcid": "0000-0003-0559-4699"
+    }
+  ],
+  "access_right": "open",
+  "title": "COVID-19 therapeutics supply-chain optimisation (NSF EAGER #2028612)",
+  "description": "<p>Minimum-cost network-flow model for distributing COVID-19 therapeutics across Harris County, Texas, with penalties on unmet demand so that an under-supplied instance answers <em>who goes short, and where</em> rather than simply reporting infeasibility.</p><p>Includes a reconstruction of the published scenarios. The paper's parameter file was not preserved; demand was recovered exactly from the project's own population table (3,270,360 people across ZIPs 77002-77099, 20% elderly target = 654,072, both matching the paper to the digit), and the two unrecorded parameters were fitted against the published results. The reconstruction reproduces all three published penalty figures within 0.4%. One published figure, a 32% service level, is shown to be arithmetically incompatible with the others and is reported as such rather than fitted around.</p><p>Funded by the National Science Foundation under EAGER award <strong>#2028612</strong>, \"AI-Enabled Optimization of the COVID-19 Therapeutics Supply Chain to Support Community Public Health\".</p>",
+  "related_identifiers": [
+    {
+      "identifier": "10.3389/ffutr.2021.732331",
+      "relation": "isSupplementTo",
+      "scheme": "doi",
+      "resource_type": "publication-article"
+    }
+  ],
+  "grants": [
+    {
+      "id": "10.13039/100000001::2028612"
+    }
+  ],
+  "keywords": [
+    "supply chain optimisation",
+    "COVID-19",
+    "network flow",
+    "health equity",
+    "operations research",
+    "NSF EAGER"
+  ]
+}
