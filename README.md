@@ -1,5 +1,8 @@
 # COVID-19 therapeutics supply chain — NSF EAGER #2028612
 
+[![Paper DOI](https://img.shields.io/badge/paper-10.3389%2Fffutr.2021.732331-blue)](https://doi.org/10.3389/ffutr.2021.732331)
+[![Code DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22309107.svg)](https://doi.org/10.5281/zenodo.22309107)
+
 A minimum-cost network-flow model for distributing COVID-19 therapeutics, with penalties on unmet
 demand so the question becomes *who goes short, and where* rather than *is this feasible*.
 
@@ -225,10 +228,9 @@ Cite **the paper** for the work and **this repository** for the code.
 }
 ```
 
-**Code DOI:** not yet minted. Once this repository is connected to Zenodo and a release is tagged,
-Zenodo issues two DOIs — a *version* DOI per release, and a **concept DOI that always resolves to
-the latest version and never changes**. The concept DOI goes here and in `CITATION.cff`; it stays
-correct for the life of the repository, so it is one edit rather than a per-release chore.
+**Code DOI:** [10.5281/zenodo.22309107](https://doi.org/10.5281/zenodo.22309107) — this is the *concept* DOI. It always resolves
+to the latest version and never changes, so it is the one to cite. The v1.0.0 release
+additionally has its own version DOI, 10.5281/zenodo.22309108, if you need to pin an exact release.
 
 `CITATION.cff` in the repo root also gives GitHub's "Cite this repository" button.
 
