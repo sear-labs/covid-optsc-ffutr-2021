@@ -100,8 +100,13 @@ def load_miles(zips):
         columns={"From_ZIP": "ZipCode", "Total_Miles": "miles"})
     d = d.groupby("ZipCode", as_index=False)["miles"].min()
     out = zips.merge(d, on="ZipCode", how="left")
-    out["miles"] = out["miles"].replace(0.0, pd.NA)
-    out["miles"] = out["miles"].astype("float64").fillna(out["miles"].astype("float64").median())
+    # A ZIP whose nearest provider sits inside it records 0.0 miles. That is a
+    # real fact but not a usable transport distance, so treat it as missing and
+    # fill with the median. to_numeric(errors="coerce") keeps the column a
+    # genuine float - pd.NA in an object column breaks the later arithmetic.
+    miles = pd.to_numeric(out["miles"], errors="coerce")
+    miles = miles.mask(miles <= 0.0)
+    out["miles"] = miles.fillna(miles.median())
     return out
 
 

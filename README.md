@@ -99,6 +99,40 @@ quietly optimising one and presenting it as agreement.
 Most likely the 32% is computed on a different base or is a reporting slip; the penalty figures are
 mutually consistent and the service level is the odd one out.
 
+### The figures
+
+The paper's eight result figures were made in R and were not preserved.
+`scripts/make_figures.py` rebuilds approximate replicas in Python from the
+reconstructed parameterisation, into `figures/`:
+
+| | equal distribution | prioritized distribution |
+|---|---|---|
+| penalty cost | `fig05_penalty_equal.png` | `fig09_penalty_prioritized.png` |
+| transport cost | `fig06_transport_equal.png` | `fig10_transport_prioritized.png` |
+| cost comparison | `fig07_costcomparison_equal.png` | `fig11_costcomparison_prioritized.png` |
+| service levels | `fig08_service_equal.png` | `fig12_service_prioritized.png` |
+
+Figure 5 overlays the paper's published values as open circles on the
+reconstructed bars — they sit on top of each other, which is the clearest
+statement of how well the reconstruction lands.
+
+**Two things fall out that corroborate the paper.** First, the penalty charts for
+equal and prioritized distribution are near-identical, and the paper says
+exactly that: *"This figure for penalty cost for prioritized distribution looks
+similar to penalty cost chart for equal distribution in this case."* The reason
+is visible in the reconstruction — a flat $70 rate makes total penalty depend
+only on total unmet demand, not on who goes unserved.
+
+Second, the service-level figures carry a line the originals do not: coverage of
+the **most-vulnerable third** of ZIPs. That is where prioritization actually
+shows up. At scenario 1 the city overall is at **26%**, while the most
+vulnerable third reaches **77%** — the paper's central claim, made measurable.
+
+The policies are implemented as the paper describes them: **equal** serves every
+ZIP the same *fraction* of its demand; **prioritized** fills ZIPs in descending
+CHI order, with CHI stood in for by the CDC SVI percentile the project's data
+carries.
+
 ### What ships
 
 - `data/derived_paper_instance.csv` — the recovered 96-ZIP instance: population, demand, SVI-scaled
