@@ -1,6 +1,7 @@
 # COVID-19 therapeutics supply chain — NSF EAGER #2028612
 
 [![Paper DOI](https://img.shields.io/badge/paper-10.3389%2Fffutr.2021.732331-blue)](https://doi.org/10.3389/ffutr.2021.732331)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sear-labs/covid-optsc-ffutr-2021/blob/main/notebooks/00_walkthrough.ipynb)
 [![Code DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22309107.svg)](https://doi.org/10.5281/zenodo.22309107)
 
 A minimum-cost network-flow model for distributing COVID-19 therapeutics, with penalties on unmet

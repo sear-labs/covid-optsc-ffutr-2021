@@ -39,11 +39,12 @@ from __future__ import annotations
 
 import pandas as pd
 
-from .paths import DATA_DIR, RESULTS_DIR
+from .paths import DATA_DIR, RESULTS_DIR, check_data_dir
 
 
 def _read(name: str) -> pd.DataFrame:
     """Read one instance table from the immutable data tier."""
+    check_data_dir(DATA_DIR)
     path = DATA_DIR / f"{name}.csv"
     if not path.exists():
         raise FileNotFoundError(f"{path} missing - the instance is incomplete")
