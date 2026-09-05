@@ -18,7 +18,7 @@ authors = [{ name = "Erick C. Jones Jr.", email = "erick.jones@uta.edu" }]
 dependencies = ["pandas>=2.0,<3", "gurobipy>=11.0,<14"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0,<9"]
+dev = ["pytest>=8.0,<9", "tomli; python_version < '3.11'"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
