@@ -10,7 +10,7 @@
 
 *$set nin indata2
 
-$call GDXXRW input=gamsinputcovid.xlsx output=indatamod.gdx index=index!A1
+$call GDXXRW input=covid_input.xlsx output=indatamod.gdx index=index!A1
 
 *Multipliers that Can be Modified
 
